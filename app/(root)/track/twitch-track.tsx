@@ -24,7 +24,7 @@ export function TwitchTrack({
     <div className="flex items-baseline gap-2">
       <TwitchLogo className="size-16 text-twitch" />
       <NumberTicker
-        value={streamInfo.viewer_count ?? 0}
+        value={streamInfo?.viewer_count ?? 0}
         className="whitespace-pre-wrap text-8xl font-medium tracking-tighter text-black dark:text-white"
       />
     </div>

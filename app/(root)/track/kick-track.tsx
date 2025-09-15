@@ -20,8 +20,6 @@ export function KickTrack({
     await revalidateTrack({ handle, platform: "kick" });
   }, 30);
 
-  if (!streamInfo.livestream?.is_live) return null;
-
   return (
     <div className="flex items-baseline gap-2">
       <KickLogo className="size-16 text-kick" />
