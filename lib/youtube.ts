@@ -15,7 +15,10 @@ async function getChannelId(slug: string) {
   )}&type=channel&key=${apiKey}`;
 
   const res = await fetch(uri);
-  if (!res.ok) throw new Error("Failed to fetch channelId");
+  if (!res.ok) {
+    console.error("YouTube API error:", await res.text());
+    throw new Error("Failed to fetch channelId");
+  }
 
   const data = await res.json();
   return data.items?.[0]?.id?.channelId ?? null;
@@ -44,7 +47,10 @@ export async function getYouTubeLiveStreamInfo(slug: string) {
 
   const uri = `https://${apiDomain}/videos?part=liveStreamingDetails&id=${videoId}&key=${apiKey}`;
   const res = await fetch(uri);
-  if (!res.ok) throw new Error("Failed to fetch live stream info");
+  if (!res.ok) {
+    console.error("YouTube API error:", await res.text());
+    throw new Error("Failed to fetch live stream info");
+  }
 
   const { items } = YouTubeVideoResponseSchema.parse(await res.json());
 

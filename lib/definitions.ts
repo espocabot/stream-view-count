@@ -51,30 +51,8 @@ export const KickStreamsResponseSchema = z.object({
       language: z.string(),
       is_mature: z.boolean(),
       viewer_count: z.number(),
-      thumbnail: z.null(),
       lang_iso: z.string(),
       tags: z.array(z.string()),
-      categories: z.array(
-        z.object({
-          id: z.number(),
-          category_id: z.number(),
-          name: z.string(),
-          slug: z.string(),
-          tags: z.array(z.string()),
-          description: z.null(),
-          deleted_at: z.null(),
-          is_mature: z.boolean(),
-          is_promoted: z.boolean(),
-          viewers: z.number(),
-          is_fallback: z.boolean(),
-          category: z.object({
-            id: z.number(),
-            name: z.string(),
-            slug: z.string(),
-            icon: z.string(),
-          }),
-        }),
-      ),
     })
     .nullable(),
   role: z.null(),
@@ -82,28 +60,6 @@ export const KickStreamsResponseSchema = z.object({
   follower_badges: z.array(z.unknown()),
   offline_banner_image: z.object({ src: z.string(), srcset: z.string() }),
   verified: z.boolean(),
-  recent_categories: z.array(
-    z.object({
-      id: z.number(),
-      category_id: z.number(),
-      name: z.string(),
-      slug: z.string(),
-      tags: z.array(z.string()),
-      description: z.null(),
-      deleted_at: z.null(),
-      is_mature: z.boolean(),
-      is_promoted: z.boolean(),
-      viewers: z.number(),
-      is_fallback: z.boolean(),
-      banner: z.object({ responsive: z.string(), url: z.string() }),
-      category: z.object({
-        id: z.number(),
-        name: z.string(),
-        slug: z.string(),
-        icon: z.string(),
-      }),
-    }),
-  ),
 });
 
 export type KickUserDetails = z.infer<typeof KickStreamsResponseSchema>;

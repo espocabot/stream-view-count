@@ -1,8 +1,7 @@
 "use client";
 
 import { use } from "react";
-import { TwitchLogo } from "@/components/logo/twitch-logo";
-import { NumberTicker } from "@/components/magicui/number-ticker";
+import { PlatformTrack } from "@/components/platform-track";
 import { useInterval } from "@/hooks/use-interval";
 import { revalidateTrack } from "@/lib/actions";
 import type { TwitchUserDetails } from "@/lib/definitions";
@@ -21,12 +20,9 @@ export function TwitchTrack({
   }, 30);
 
   return (
-    <div className="flex items-baseline gap-2">
-      <TwitchLogo className="size-16 text-twitch" />
-      <NumberTicker
-        value={streamInfo?.viewer_count ?? 0}
-        className="whitespace-pre-wrap text-8xl font-medium tracking-tighter text-black dark:text-white"
-      />
-    </div>
+    <PlatformTrack
+      platform="twitch"
+      viewCount={streamInfo?.viewer_count ?? 0}
+    />
   );
 }
