@@ -20,13 +20,13 @@ export function KickTrack({
     await revalidateTrack({ handle, platform: "kick" });
   }, 30);
 
-  if (!streamInfo.livestream.is_live) return null;
+  if (!streamInfo.livestream?.is_live) return null;
 
   return (
     <div className="flex items-baseline gap-2">
       <KickLogo className="size-16 text-kick" />
       <NumberTicker
-        value={streamInfo.livestream.viewer_count ?? 0}
+        value={streamInfo.livestream?.viewer_count ?? 0}
         className="whitespace-pre-wrap text-8xl font-medium tracking-tighter text-black dark:text-white"
       />
     </div>
